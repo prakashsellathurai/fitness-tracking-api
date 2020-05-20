@@ -6,7 +6,7 @@ client
 .then(() => console.log(" mongo client connected status",client.isConnected()))
 .catch((e) => console.error("failed to connect with mongodb reason\n\n\n\n\n\n\n\n",e))
 async function getUserCollection () {
-        return await client.db("main-database").collection("users")
+        return await client.db("user-database").collection("users-data")
 }
 module.exports = {
     listDatabases:async function (){
