@@ -1,0 +1,19 @@
+{
+  "name": "app-engine",
+  "version": "1.0.0",
+  "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
+  "main": "index.js",
+  "engines": {
+    "node": ">=13.11.0",
+    "npm": ">=6.13.7"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "~4.16.1"
+  },
+  "author": "",
+  "license": "ISC"
+}
