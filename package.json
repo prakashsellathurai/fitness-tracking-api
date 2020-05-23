@@ -4,8 +4,7 @@
   "description": "A barebones Node.js app using [Express 4](http://expressjs.com/).",
   "main": "index.js",
   "engines": {
-    "node": ">=13.11.0",
-    "npm": ">=6.13.7"
+    "node": "^10"
   },
   "scripts": {
     "start": "node index.js",

@@ -12,7 +12,7 @@ router.post('/add/:uid', function (req, res, next) {
     }))
 });
 /* GET users listing. */
-router.get('/get/:uid', function (req, res, next) {
+router.get('/get/:uid',async function (req, res, next) {
   uid = req.params.uid
   start_date = req.params.start_date
   end_date = req.params.end_date

@@ -38,12 +38,12 @@ client
                     "quantity_in_grams": 100
                 }
                 data_jsons.push(data_json)
-    
+                    console.log(data_json['total_calories'],calories,data_json["name"])
             }
-            client
-            .db('nutrition_database')
-            .collection('v1')
-            .insert(data_jsons).then((res)=> console.log(res))
+            // client
+            // .db('nutrition_database')
+            // .collection('v1')
+            // .updateMany(data_jsons).then((res)=> console.log(res))
         });
     
     

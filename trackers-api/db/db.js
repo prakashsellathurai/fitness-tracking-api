@@ -124,25 +124,33 @@ module.exports = {
             }).toArray()
     }
     , water: {
-        add: async (uid, time, quantity_in_ml) => {
+        add: async (uid, day, quantity_in_ml) => {
             return await client.db('tracker_database')
                 .collection(`water_tracker.${uid}`)
                 .updateOne(
-                    { 'time': time },
+                    { 'day': day },
                     {
                         '$set': {
-                            'time': time,
+                            'day': day,
                             'quantity_in_ml': quantity_in_ml
                         }
                     },
                     { upsert: true }
                 )
         },
-        getLogs: async (uid, time1, time2) => {
+        fetchTodayIntake: async(uid,day) => {
+            return await client.db('tracker_database')
+            .collection(`water_tracker.${uid}`)
+            .find({
+                'day': {$lte: day }
+            }).toArray()
+        }
+        ,
+        getLogs: async (uid, start_day, end_day) => {
             return await client.db('tracker_database')
                 .collection(`water_tracker.${uid}`)
                 .find({
-                    'time': { $gte: time1, $lte: time2 }
+                    'day': { $gte: start_day, $lte: end_day }
                 }).toArray()
         }
     }

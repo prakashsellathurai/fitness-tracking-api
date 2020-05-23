@@ -1,3 +1,5 @@
 dispatch:
     - url: '*/user'
       module: user-api
+    - url: '*/trackers'
+      module: trackers-api

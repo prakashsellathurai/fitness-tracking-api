@@ -216,18 +216,18 @@ router.get('/get/:uid',async(req,res) => {
 
     end_date = (Date.parse(req.params.end_date)) || new Date().toDateString()//.toISOString()
     end_date = new Date(end_date).toISOString() 
-    var result = await db.getMealdataBetweenDates(uid,start_date,end_date)
+    var results = await db.getMealdataBetweenDates(uid,start_date,end_date)
 
     res.json({
-      'result':result
+      'results':results
     })
   } else {
     date = (Date.parse(req.params.date)) || new Date().toDateString()//.toISOString()
     date = new Date(date).toISOString()
-    var result = await db.getMealdataFromDate(uid,date)
+    var results = await db.getMealdataFromDate(uid,date)
 
     res.json({
-      'result':result
+      'results':results
     })
   }
 })
