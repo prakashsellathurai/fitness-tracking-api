@@ -29,4 +29,14 @@ router.get('/get/:uid', async function (req, res, next) {
   })
 
 });
+router.get('/get/:uid/all', async function (req, res, next) {
+
+  uid = req.params.uid
+
+  result = await db.water.getAllLogs(uid)
+  res.send({
+    'results': result
+  })
+
+});
 module.exports = router;

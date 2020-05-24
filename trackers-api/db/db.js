@@ -122,6 +122,12 @@ module.exports = {
             .find({
                 'date': { $gte: StartDate, $lte: endDate }
             }).toArray()
+    },
+
+    getAllMealData: async(uid) => {
+        return await client.db('tracker_database')
+        .collection(`meal_tracker.${uid}`)
+        .find().toArray()
     }
     , water: {
         add: async (uid, day, quantity_in_ml) => {
@@ -152,6 +158,12 @@ module.exports = {
                 .find({
                     'day': { $gte: start_day, $lte: end_day }
                 }).toArray()
+        },
+
+        getAllLogs: async(uid) => {
+            return await client.db('tracker_database')
+            .collection(`water_tracker.${uid}`)
+            .find().toArray();
         }
     }
     ,weight : {

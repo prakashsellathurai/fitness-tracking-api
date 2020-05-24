@@ -34,12 +34,12 @@ router.get('/search', async function (req, res, next) {
 router.post('/add/:uid/breakfast', async (req, res) => {
   try {
     uid = req.params.uid
-    body =req.body
+    body = req.body
     date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
     date = new Date(date).toISOString()
 
     console.log(body);
-    meal_list =body.meal_list || []
+    meal_list = body.meal_list || []
     calories_list = body.calories_list || []
     quantities_in_grams = body.quantities_in_grams || []
     total_calories = body.total_calories || 0
@@ -209,27 +209,39 @@ router.post('/add/:uid/entire_day_meal', async function (req, res, next) {
     })
   }
 })
-router.get('/get/:uid',async(req,res) => {
+
+router.get('/get/:uid/all', async (req, res) => {
   uid = req.params.uid
-  if (req.params.start_date && req.params.end_date ){
+
+  var results = await db.getAllMealData(uid)
+
+  res.json({
+    'results': results
+  })
+})
+router.get('/get/:uid', async (req, res) => {
+  uid = req.params.uid
+  if (req.params.start_date && req.params.end_date) {
     start_date = (Date.parse(req.params.start_date)) || new Date().toDateString()//.toISOString()
-    start_date = new Date(start_date).toISOString() 
+    start_date = new Date(start_date).toISOString()
 
     end_date = (Date.parse(req.params.end_date)) || new Date().toDateString()//.toISOString()
-    end_date = new Date(end_date).toISOString() 
-    var results = await db.getMealdataBetweenDates(uid,start_date,end_date)
+    end_date = new Date(end_date).toISOString()
+    var results = await db.getMealdataBetweenDates(uid, start_date, end_date)
 
     res.json({
-      'results':results
+      'results': results
     })
   } else {
     date = (Date.parse(req.params.date)) || new Date().toDateString()//.toISOString()
     date = new Date(date).toISOString()
-    var results = await db.getMealdataFromDate(uid,date)
+    var results = await db.getMealdataFromDate(uid, date)
 
     res.json({
-      'results':results
+      'results': results
     })
   }
 })
+
+
 module.exports = router;
