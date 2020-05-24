@@ -34,14 +34,15 @@ router.get('/search', async function (req, res, next) {
 router.post('/add/:uid/breakfast', async (req, res) => {
   try {
     uid = req.params.uid
-    body = req.body
+    body =req.body
     date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
     date = new Date(date).toISOString()
 
-    meal_list = req.body.meal_list || []
-    calories_list = req.body.calories_list || []
-    quantities_in_grams = req.body.quantities_in_grams || []
-    total_calories = req.body.total_calories || 0
+    console.log(body);
+    meal_list =body.meal_list || []
+    calories_list = body.calories_list || []
+    quantities_in_grams = body.quantities_in_grams || []
+    total_calories = body.total_calories || 0
     breakfast = {
       'meal_list': meal_list,
       'calories_list': calories_list,
