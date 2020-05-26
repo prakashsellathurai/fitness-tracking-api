@@ -221,20 +221,18 @@ router.get('/get/:uid/all', async (req, res) => {
 })
 router.get('/get/:uid', async (req, res) => {
   uid = req.params.uid
-  if (req.params.start_date && req.params.end_date) {
-    start_date = (Date.parse(req.params.start_date)) || new Date().toDateString()//.toISOString()
-    start_date = new Date(start_date).toISOString()
+  if (req.query.start_date && req.query.end_date) {
+    start_date = req.query.start_date
+    end_date = req.query.end_date
 
-    end_date = (Date.parse(req.params.end_date)) || new Date().toDateString()//.toISOString()
-    end_date = new Date(end_date).toISOString()
     var results = await db.getMealdataBetweenDates(uid, start_date, end_date)
 
     res.json({
       'results': results
     })
   } else {
-    date = (Date.parse(req.params.date)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = req.query.date//.toISOString()
+   
     var results = await db.getMealdataFromDate(uid, date)
 
     res.json({

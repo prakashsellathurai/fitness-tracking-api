@@ -110,10 +110,14 @@ module.exports = {
             )
     },
     getMealdataFromDate: async (uid, date) => {
+        
         return await client.db('tracker_database')
             .collection(`meal_tracker.${uid}`)
             .find({
-                'date': { $lte: date }
+                'date': { 
+                    $lte: date,
+                     $gte: date
+                    }
             }).toArray()
     },
     getMealdataBetweenDates: async (uid, StartDate, endDate) => {
