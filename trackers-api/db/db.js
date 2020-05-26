@@ -152,7 +152,9 @@ module.exports = {
             return await client.db('tracker_database')
             .collection(`water_tracker.${uid}`)
             .find({
-                'day': {$lte: day }
+                'day': {
+                    $gte: day,
+                    $lte: day }
             }).toArray()
         }
         ,

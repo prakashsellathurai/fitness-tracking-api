@@ -35,8 +35,7 @@ router.post('/add/:uid/breakfast', async (req, res) => {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date 
 
     console.log(body);
     meal_list = body.meal_list || []
@@ -66,8 +65,7 @@ router.post('/add/:uid/morning_snack', async (req, res) => {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date 
 
     meal_list = req.body.meal_list || []
     calories_list = req.body.calories_list || []
@@ -97,8 +95,7 @@ router.post('/add/:uid/lunch', async (req, res) => {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date 
 
     meal_list = req.body.meal_list || []
     calories_list = req.body.calories_list || []
@@ -128,8 +125,7 @@ router.post('/add/:uid/evening_snack', async (req, res) => {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date 
 
     meal_list = req.body.meal_list || []
     calories_list = req.body.calories_list || []
@@ -159,8 +155,7 @@ router.post('/add/:uid/dinner', async (req, res) => {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date 
 
     meal_list = req.body.meal_list || []
     calories_list = req.body.calories_list || []
@@ -189,8 +184,8 @@ router.post('/add/:uid/entire_day_meal', async function (req, res, next) {
   try {
     uid = req.params.uid
     body = req.body
-    date = (Date.parse(body.date_string)) || new Date().toDateString()//.toISOString()
-    date = new Date(date).toISOString()
+    date = body.date//.toISOString()
+    
 
     breakfast = JSON.parse(body.breakfast) || { 'meal_list': [], 'calories_list': [], 'quantities_in_grams': [], 'total_calories': 0 }
     morning_snack = JSON.parse(body.morning_snack) || { 'meal_list': [], 'calories_list': [], 'quantities_in_grams': [], 'total_calories': 0 }
