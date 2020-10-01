@@ -3,3 +3,5 @@ dispatch:
       module: user-api
     - url: '*/trackers'
       module: trackers-api
+    - url: '*/payments'
+      module: payments-api

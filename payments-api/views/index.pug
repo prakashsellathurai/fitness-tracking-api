@@ -1,0 +1,33 @@
+extends layout
+
+block content
+      form(action = "https://uat.billdesk.com/pgidsk/PGIMerchantPayment", method = "POST")
+         div
+            label(for = "MerchantID") MerchantID:
+            input(name = "MerchantID" value = "BDSKUATY")
+         br
+         div
+            label(for = "UniqueTxnID") UniqueTxnID:
+            input(name = "UniqueTxnID" value = "ARP10234")
+         br
+         div
+            label(for = "TxnAmount") TxnAmount:
+            input(name = "TxnAmount" value = 2.00)
+         br
+         div
+            label(for = "CurrencyType") CurrencyType:
+            input(name = "CurrencyType" value = "INR")
+         br
+         div
+            label(for = "TypeField1") TypeField1:
+            input(name = "TypeField1" value = "R")
+         br
+         div
+            label(for = "SecurityID") SecurityID:
+            input(name = "SecurityID" value = "bdskuaty")
+         br
+         div
+            label(for = "RU") RU:
+            input(name = "RU" value = "https://payments-api-dot-hygieafit.el.r.appspot.com/result")
+         br
+         button(type = "submit") Submit
